@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1045 &1
+EditorBuildSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/StartScene.unity
+    guid: fa76feab39f1e0e408cd96690b36ba20
+  - enabled: 1
+    path: Assets/Scenes/AtticRoom.unity
+    guid: c87bf7ee95ed2324b8049d8ec6593f30
+  - enabled: 1
+    path: Assets/Scenes/AtticBedRoom.unity
+    guid: 35d3e5fdf723d1044a2f87efbd2f7b30
+  - enabled: 1
+    path: Assets/Scenes/LivingRoom.unity
+    guid: 4448d65f592236f42b7e45d8436cde01
