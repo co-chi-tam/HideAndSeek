@@ -32,6 +32,9 @@ namespace HideAndSeek {
 		[Header("Swap points")]
 		public CSwapPoint[] swapPoints;
 
+		[Header("Hiden points")]
+		public CHiddenPoint[] hiddenPoints;
+
 		#endregion
 
 		#region Implementation MonoBehaviour
@@ -64,6 +67,12 @@ namespace HideAndSeek {
 					return this.swapPoints [i];
 			}
 			return null;
+		}
+
+		public virtual CHiddenPoint GetHiddenPoint(int index) {
+			if (index < 0 || index >= this.hiddenPoints.Length)
+				return null;
+			return this.hiddenPoints[index];
 		}
 
 		#endregion

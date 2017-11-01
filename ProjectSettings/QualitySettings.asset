@@ -35,6 +35,7 @@ QualitySettings:
     resolutionScalingFixedDPIFactor: 1
     excludedTargetPlatforms:
     - Windows Store Apps
+    - Android
   - serializedVersion: 2
     name: Good
     pixelLightCount: 1

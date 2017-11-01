@@ -6,8 +6,14 @@ using UnityEngine.SceneManagement;
 namespace HideAndSeek {
 	public class CSwapPoint : CObjectController {
 
+		#region Fields
+
 		[Header("Info")]
 		public string swapRoom;
+
+		#endregion
+
+		#region Main methods
 
 		public override void ActivedObject() {
 			base.ActivedObject ();
@@ -17,10 +23,15 @@ namespace HideAndSeek {
 			this.m_DidActive = true;
 		}
 
-		public override Vector3 GetClosestPoint (Vector3 value)
-		{
+		#endregion
+
+		#region Getter && Setter
+
+		public override Vector3 GetClosestPoint (Vector3 value) {
 			return this.m_Transform.position;
 		}
+
+		#endregion
 		
 	}
 }

@@ -49,6 +49,14 @@ namespace HideAndSeek {
 
 		#region Getter && Setter
 
+		public virtual void SetActive(bool value) {
+			this.m_DidActive = value;
+		}
+
+		public virtual bool GetActive() {
+			return this.m_DidActive;
+		}
+
 		public virtual void SetAnimation (string name, object param = null)
 		{
 			if (this.m_Animator == null)
@@ -67,7 +75,6 @@ namespace HideAndSeek {
 		public virtual void SetPosition(Vector3 value) {
 			if (this.m_Transform == null)
 				return;
-			value.y = 0f;
 			this.m_Transform.position = value;
 		}
 
@@ -75,7 +82,6 @@ namespace HideAndSeek {
 			if (this.m_Transform == null)
 				return Vector3.zero;
 			var result = this.m_Transform.position;
-			result.y = 0f;
 			return result;
 		}
 
@@ -83,7 +89,6 @@ namespace HideAndSeek {
 			if (this.m_Collider == null)
 				return this.m_Transform.position;
 			var result = this.m_Collider.bounds.ClosestPoint (value);
-			result.y = 0f;
 			return result;
 		}
 

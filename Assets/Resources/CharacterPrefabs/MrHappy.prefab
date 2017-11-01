@@ -972,8 +972,7 @@ GameObject:
   - component: {fileID: 4798727775297626}
   - component: {fileID: 195981015056237712}
   - component: {fileID: 136323694831824218}
-  - component: {fileID: 114846022530601632}
-  - component: {fileID: 114161860572863382}
+  - component: {fileID: 114451713771289972}
   m_Layer: 0
   m_Name: MrHappy
   m_TagString: Untagged
@@ -2913,7 +2912,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &114161860572863382
+--- !u!114 &114451713771289972
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -2921,28 +2920,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 1567274955912806}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8a8ecaa8a5bbc4746bd74ce9d8d7adb6, type: 3}
+  m_Script: {fileID: 11500000, guid: 6c4af59f5d8ee7b4a81b0064733bfc55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Collider: {fileID: 136323694831824218}
   m_Animator: {fileID: 95501352767620232}
   m_TargetLayerMask:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 768
   m_CurrentTargetObject: {fileID: 0}
---- !u!114 &114846022530601632
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1567274955912806}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 41599e59a85c612459f154845d800082, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Collider: {fileID: 0}
-  m_Animator: {fileID: 95501352767620232}
 --- !u!136 &136323694831824218
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -3513,4 +3499,4 @@ NavMeshAgent:
   m_Height: 2
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 1
+  m_ObstacleAvoidanceType: 0
