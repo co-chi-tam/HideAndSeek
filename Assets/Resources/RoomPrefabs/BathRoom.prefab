@@ -717,6 +717,7 @@ MonoBehaviour:
   m_Collider: {fileID: 65769237339460474}
   m_Animator: {fileID: 0}
   stuffName: Toilet
+  stuffContain: []
   targetPoint: {fileID: 1230498406560852}
 --- !u!114 &114159450284674788
 MonoBehaviour:
@@ -732,6 +733,7 @@ MonoBehaviour:
   m_Collider: {fileID: 65709593361470768}
   m_Animator: {fileID: 0}
   stuffName: Bathtub
+  stuffContain: []
   targetPoint: {fileID: 1058012554365164}
 --- !u!114 &114426126434349820
 MonoBehaviour:
@@ -782,6 +784,8 @@ MonoBehaviour:
   m_Collider: {fileID: 65765628604330178}
   m_Animator: {fileID: 0}
   stuffName: Towel Cabinet
+  stuffContain:
+  - Towel
   targetPoint: {fileID: 1643989640443522}
 --- !u!114 &114754865681756948
 MonoBehaviour:

@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 namespace HideAndSeek {
 	public class CSwapPoint : CObjectController {
@@ -17,7 +16,7 @@ namespace HideAndSeek {
 
 		public override void ActivedObject() {
 			base.ActivedObject ();
-			if (this.m_DidActive == true || string.IsNullOrEmpty (this.swapRoom))
+			if (string.IsNullOrEmpty (this.swapRoom))
 				return;
 			CGameManager.Instance.LoadRoom (this.swapRoom);
 			this.m_DidActive = true;

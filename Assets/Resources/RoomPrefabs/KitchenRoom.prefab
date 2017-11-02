@@ -854,6 +854,8 @@ MonoBehaviour:
   m_Collider: {fileID: 65480498939251552}
   m_Animator: {fileID: 0}
   stuffName: Kitchen
+  stuffContain:
+  - Knife
   targetPoint: {fileID: 1108432293162678}
 --- !u!114 &114198401120767204
 MonoBehaviour:
@@ -883,6 +885,8 @@ MonoBehaviour:
   m_Collider: {fileID: 65161317554988882}
   m_Animator: {fileID: 0}
   stuffName: TrashBin
+  stuffContain:
+  - Paper
   targetPoint: {fileID: 1391769936612374}
 --- !u!114 &114403993124530836
 MonoBehaviour:
@@ -923,6 +927,8 @@ MonoBehaviour:
   m_Collider: {fileID: 65059204167190390}
   m_Animator: {fileID: 0}
   stuffName: Fridge
+  stuffContain:
+  - Apple
   targetPoint: {fileID: 1960678645111708}
 --- !u!114 &114606725777206320
 MonoBehaviour:

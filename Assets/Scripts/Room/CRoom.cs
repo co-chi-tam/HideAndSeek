@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -58,7 +59,24 @@ namespace HideAndSeek {
 			if (value == null)
 				return null;
 			var objCtrl = value.GetComponent<CObjectController> ();
+			if (objCtrl == null)
+				return null;
+			if (Array.IndexOf (this.stuffs, objCtrl) != -1) {
+				return objCtrl;
+			}
+			if (Array.IndexOf (this.swapPoints, objCtrl) != -1) {
+				return objCtrl;
+			}
 			return objCtrl;
+		}
+
+		public virtual CObjectController DetectStuffObject(GameObject value) {
+			if (value == null)
+				return null;
+			var objCtrl = value.GetComponent<CObjectController> ();
+			if (objCtrl == null)
+				return null;
+			return Array.IndexOf (this.stuffs, objCtrl) != -1 ? objCtrl : null;
 		}
 
 		public virtual CSwapPoint GetSwapPoint(string name) {

@@ -739,6 +739,8 @@ MonoBehaviour:
   m_Collider: {fileID: 65904158924224036}
   m_Animator: {fileID: 0}
   stuffName: Work table
+  stuffContain:
+  - Hammer
   targetPoint: {fileID: 1869709464239884}
 --- !u!114 &114277520527122332
 MonoBehaviour:
@@ -778,6 +780,8 @@ MonoBehaviour:
   m_Collider: {fileID: 65690494578166966}
   m_Animator: {fileID: 0}
   stuffName: Big stuffs
+  stuffContain:
+  - Wire
   targetPoint: {fileID: 1671985240254648}
 --- !u!114 &114879176263344844
 MonoBehaviour:
@@ -793,4 +797,6 @@ MonoBehaviour:
   m_Collider: {fileID: 65093317080743084}
   m_Animator: {fileID: 0}
   stuffName: Box
+  stuffContain:
+  - Wrench
   targetPoint: {fileID: 1940356823045316}

@@ -783,6 +783,8 @@ MonoBehaviour:
   m_Collider: {fileID: 65122917977995138}
   m_Animator: {fileID: 0}
   stuffName: Wardrobe
+  stuffContain:
+  - T-Shirt
   targetPoint: {fileID: 1868410517349240}
 --- !u!114 &114566276803713080
 MonoBehaviour:
@@ -798,6 +800,7 @@ MonoBehaviour:
   m_Collider: {fileID: 65853651941022868}
   m_Animator: {fileID: 0}
   stuffName: Bed
+  stuffContain: []
   targetPoint: {fileID: 1811985097079934}
 --- !u!114 &114605184714714642
 MonoBehaviour:
@@ -835,4 +838,6 @@ MonoBehaviour:
   m_Collider: {fileID: 65824306835737714}
   m_Animator: {fileID: 0}
   stuffName: Work table
+  stuffContain:
+  - Pencil
   targetPoint: {fileID: 1136170111882824}

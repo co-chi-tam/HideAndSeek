@@ -9,6 +9,7 @@ namespace HideAndSeek {
 
 		[Header("Info")]
 		public string stuffName;
+		public string[] stuffContain;
 
 		[Header("Target point")]
 		public GameObject targetPoint;
@@ -19,6 +20,14 @@ namespace HideAndSeek {
 
 		public override void ActivedObject() {
 			base.ActivedObject ();
+			if (this.stuffContain.Length == 0)
+				return;
+			CGameManager.Instance.ShowItem (this.stuffContain [0], (itemName) => {
+				
+			}, () => {
+				
+			});
+			this.m_DidActive = true;
 		}
 
 		#endregion

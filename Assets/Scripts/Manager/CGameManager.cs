@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -16,19 +17,26 @@ namespace HideAndSeek {
 			EndGameState = 3
 		}
 
-		[Header("Room")]
-		[SerializeField]	protected string[] m_RoomList;
+		[Header("Quest")]
+		[SerializeField]	protected ScriptableObject[] m_QuestAssets;
+		[SerializeField]	protected int m_QuestIndex = 0;
+		[SerializeField]	protected bool m_IsQuestCompleted = false;
+		[SerializeField]	protected string m_QuestRoomName = "KitchenRoom";
+		[SerializeField]	protected string m_QuestStuffName = "Kitchen";
+		[SerializeField]	protected string m_QuestStuffItem = "Knife";
 
 		[Header("Main Character")]
 		[SerializeField]	protected CCharacterController m_PrefabCharacter;
 		[SerializeField]	protected CCharacterController m_MainCharacter;
 		[SerializeField]	protected string m_CurrentRoom;
 		[SerializeField]	protected string m_PreviousRoom;
+		[SerializeField]	protected string m_InventoryStuff;
 
 		[Header("Hidden Character")]
 		[SerializeField]	protected CCharacterController m_PrefabHiddenCharacter;
 		[SerializeField]	protected CCharacterController m_HiddenCharacter;
 		[SerializeField]	protected string m_HiddenRoom;
+		[SerializeField]	protected UnityEngine.Object[] m_HiddeRoomList;
 
 		[Header("Game State")]
 		[SerializeField]	protected EGameState m_GameState = EGameState.WaitingState;
@@ -38,6 +46,7 @@ namespace HideAndSeek {
 
 		protected EGameState m_NextGameState = EGameState.WaitingState;
 		protected bool m_StateUpdated = false;
+		protected CQuest m_CurrentQuest;
 
 		#endregion
 
@@ -105,20 +114,11 @@ namespace HideAndSeek {
 				|| this.m_HiddenCharacter != null)
 				return;
 			// Instantiate main character
-			var startPoint = Vector3.zero;
-			this.m_MainCharacter = Instantiate (this.m_PrefabCharacter);
-			this.m_MainCharacter.SetPosition (startPoint);
-			this.m_MainCharacter.SetActive (true);
-			// Dont destroy main character
-			DontDestroyOnLoad (this.m_MainCharacter.gameObject);
-
+			this.LoadMainCharacter();
 			// Instantiate hidden character
-			this.m_HiddenCharacter = Instantiate (this.m_PrefabHiddenCharacter);
-			this.m_HiddenCharacter.SetPosition (startPoint);
-			this.m_HiddenCharacter.SetActive (false);
-			// Dont destroy main character
-			DontDestroyOnLoad (this.m_HiddenCharacter.gameObject);
-
+			this.LoadHiddenCharacter();
+			// Load quest
+			this.LoadQuest();
 			// Change state
 			this.m_NextGameState = EGameState.UpdateGameState;
 			this.m_GameState = this.m_NextGameState;
@@ -145,17 +145,41 @@ namespace HideAndSeek {
 						this.m_HiddenCharacter.SetActive (true);
 					}
 				}
+				// Load quest
+				if (this.m_IsQuestCompleted) {
+					this.CompletedQuest ();
+				}
 				this.m_StateUpdated = true;
 			}
 		}
 
 		protected virtual void UpdateEndGameState() {
-			Destroy (this.m_MainCharacter.gameObject);
+			// Change state
+			this.m_NextGameState = EGameState.EndGameState;
+			this.m_GameState = this.m_NextGameState;
 		}
 
 		#endregion
 
 		#region Character 
+
+		public virtual void LoadMainCharacter() {
+			var startPoint = Vector3.zero;
+			this.m_MainCharacter = Instantiate (this.m_PrefabCharacter);
+			this.m_MainCharacter.SetPosition (startPoint);
+			this.m_MainCharacter.SetActive (true);
+			// Dont destroy main character
+			DontDestroyOnLoad (this.m_MainCharacter.gameObject);
+		}
+
+		public virtual void LoadHiddenCharacter() {
+			var startPoint = Vector3.zero;
+			this.m_HiddenCharacter = Instantiate (this.m_PrefabHiddenCharacter);
+			this.m_HiddenCharacter.SetPosition (startPoint);
+			this.m_HiddenCharacter.SetActive (false);
+			// Dont destroy main character
+			DontDestroyOnLoad (this.m_HiddenCharacter.gameObject);
+		}
 
 		public virtual bool DidCatched() {
 			return false;
@@ -173,14 +197,111 @@ namespace HideAndSeek {
 		}
 
 		public virtual void LoadHiddenRoom() {
-			for (int i = 0; i < this.m_RoomList.Length; i++) {
-				var random = Random.Range (0, this.m_RoomList.Length);
-				var room = this.m_RoomList [random];
-				if (room != this.m_HiddenRoom) {
-					this.m_HiddenRoom = room;
+			for (int i = 0; i < this.m_HiddeRoomList.Length; i++) {
+				var random = UnityEngine.Random.Range (0, this.m_HiddeRoomList.Length);
+				var room = this.m_HiddeRoomList [random];
+				if (room.name != this.m_HiddenRoom) {
+					this.m_HiddenRoom = room.name;
 					break;
 				}
 			}
+		}
+
+		#endregion
+
+		#region Item
+
+		public virtual void DropItem(Vector2 pos) {
+			var rayPoint = Camera.main.ScreenPointToRay(pos);
+			RaycastHit hitInfo;
+			if (Physics.Raycast (rayPoint, out hitInfo, 100f)) {
+				var room = CRoom.Instance;
+				var objCtrl = room.DetectStuffObject (hitInfo.collider.gameObject) as CStuff;
+				if (objCtrl != null 
+					&& room.roomSceneName == this.m_CurrentQuest.questRoomName
+					&& objCtrl.stuffName == this.m_CurrentQuest.questStuffName) {
+					// RESET QUEST
+					this.UpdateQuest ();
+				}
+				this.m_MainCharacter.SetTargetPosition (hitInfo.point);
+				this.RemoveItem ();
+			}
+		}
+
+		public virtual void AddItem(string name) {
+			this.m_InventoryStuff = name;
+			this.m_UIManager.TakeItem (name);
+		}
+
+		public virtual void RemoveItem() {
+			this.m_InventoryStuff = string.Empty;
+			this.m_UIManager.DroppedItem ();
+		}
+
+		public virtual void ShowItem(string name, Action<string> submit, Action cancel) {
+			if (name == this.m_InventoryStuff
+				|| name == this.m_QuestStuffItem) {
+				if (cancel != null) {
+					cancel ();
+				}
+				return;
+			}
+			this.ShowItemPanel (name, submit, cancel);
+		}
+
+		public virtual void ShowQuestItem(Action<string> submit, Action cancel) {
+			if (string.IsNullOrEmpty (this.m_QuestStuffItem)) {
+				if (cancel != null) {
+					cancel ();
+				}
+				return;
+			}
+			this.ShowItemPanel (this.m_QuestStuffItem, submit, cancel);
+		}
+
+		private void ShowItemPanel(string name, Action<string> submit, Action cancel) {
+			this.m_UIManager.ShowItemPanel (name, 
+				(itemName) => {
+					this.AddItem(name);
+					if (submit != null) {
+						submit(itemName);
+					}
+				}, cancel);
+		}
+
+		#endregion
+
+		#region Quest
+
+		public virtual void LoadQuest() {
+			this.m_CurrentQuest		= this.m_QuestAssets[this.m_QuestIndex] as CQuest;
+			this.m_QuestRoomName 	= this.m_CurrentQuest.questRoomName;
+			this.m_QuestStuffName 	= this.m_CurrentQuest.questStuffName;
+			this.m_QuestStuffItem 	= this.m_CurrentQuest.questStuffItemName;
+			this.m_IsQuestCompleted = false;
+			this.m_UIManager.SetQuestInfoText (this.m_CurrentQuest.questDescription);
+		}
+
+		public virtual void UpdateQuest() {
+			this.m_QuestRoomName 	= string.Empty;
+			this.m_QuestStuffName 	= string.Empty;
+			this.m_QuestStuffItem 	= string.Empty;
+			this.m_IsQuestCompleted = true;
+			this.m_UIManager.SetQuestInfoText (string.Format ("Return {0} to get new command", 
+				this.m_CurrentQuest.questReceiveRoomName));
+		}
+
+		public virtual void CompletedQuest() {
+			if (this.m_CurrentQuest == null
+				|| this.m_CurrentQuest.questReceiveRoomName != CRoom.Instance.roomSceneName)
+				return;
+			this.m_QuestIndex = this.m_QuestIndex + 1 >= this.m_QuestAssets.Length 
+				? this.m_QuestAssets.Length
+				: this.m_QuestIndex + 1;
+			if (this.m_QuestIndex >= this.m_QuestAssets.Length) {
+				return;
+			}
+			this.LoadQuest ();
 		}
 
 		#endregion

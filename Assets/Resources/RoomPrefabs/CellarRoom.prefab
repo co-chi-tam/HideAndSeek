@@ -654,6 +654,8 @@ MonoBehaviour:
   m_Collider: {fileID: 65948759221796066}
   m_Animator: {fileID: 0}
   stuffName: Carton Box
+  stuffContain:
+  - Socks
   targetPoint: {fileID: 1348552595955760}
 --- !u!114 &114640510192444928
 MonoBehaviour:
@@ -669,6 +671,8 @@ MonoBehaviour:
   m_Collider: {fileID: 65742483630316300}
   m_Animator: {fileID: 0}
   stuffName: Washing machine
+  stuffContain:
+  - Jeans
   targetPoint: {fileID: 1685221609792100}
 --- !u!114 &114659332954399334
 MonoBehaviour:

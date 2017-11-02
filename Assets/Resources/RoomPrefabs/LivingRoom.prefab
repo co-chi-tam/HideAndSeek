@@ -175,7 +175,7 @@ GameObject:
   - component: {fileID: 65830052418683372}
   - component: {fileID: 114297878216529892}
   m_Layer: 9
-  m_Name: TV Cabinet
+  m_Name: TVCabinet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -824,7 +824,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Collider: {fileID: 65830052418683372}
   m_Animator: {fileID: 0}
-  stuffName: TV Cabinet
+  stuffName: TVCabinet
+  stuffContain:
+  - Remote
   targetPoint: {fileID: 1365984985141038}
 --- !u!114 &114337852069249010
 MonoBehaviour:

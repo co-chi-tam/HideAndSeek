@@ -715,6 +715,8 @@ MonoBehaviour:
   m_Collider: {fileID: 65202094389734920}
   m_Animator: {fileID: 0}
   stuffName: Old Cabinet
+  stuffContain:
+  - Books
   targetPoint: {fileID: 1724237067698956}
 --- !u!114 &114122796010831528
 MonoBehaviour:
@@ -804,4 +806,6 @@ MonoBehaviour:
   m_Collider: {fileID: 65703236471687158}
   m_Animator: {fileID: 0}
   stuffName: Old Carton Box
+  stuffContain:
+  - Tape
   targetPoint: {fileID: 1123139681882698}
