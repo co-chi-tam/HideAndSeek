@@ -47,12 +47,12 @@ namespace HideAndSeek {
 
 		private bool isUITouched = false;
 		private bool IsPointerUp(int index) {
-#if UNITY_EDITOR
+#if UNITY_EDITOR || UNITY_WEBGL
 			if (Input.GetMouseButtonUp(index)) {
 				isUITouched = EventSystem.current.IsPointerOverGameObject();
 				return true && !isUITouched;
 			}
-#elif UNITY_ANDROID
+#elif UNITY_ANDROID || UNITY_IOS
 			if (Input.touchCount != 1) 
 				return false;
 			var fingerTouch = Input.GetTouch (index);
