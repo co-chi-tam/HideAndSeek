@@ -17,3 +17,5 @@ MonoBehaviour:
   questRoomName: LivingRoom
   questStuffName: TVCabinet
   questStuffItemName: Remote
+  questCompleteText: Return attic room to get new command.
+  questFailText: Try again.

@@ -9,6 +9,7 @@ namespace HideAndSeek {
 
 		[Header("Info")]
 		public string objectName;
+		[SerializeField]	protected bool m_DidActive;
 
 		[Header("Collider")]
 		[SerializeField]	protected Collider m_Collider;
@@ -16,7 +17,6 @@ namespace HideAndSeek {
 		[Header("Animator")]
 		[SerializeField]	protected Animator m_Animator;
 
-		protected bool m_DidActive;
 		protected Transform m_Transform;
 
 		#endregion
@@ -25,7 +25,7 @@ namespace HideAndSeek {
 
 		protected virtual void Awake() {
 			this.m_Transform = this.transform;
-			this.m_DidActive = false;
+			this.m_DidActive = true;
 		}
 
 		protected virtual void Start() {
@@ -93,6 +93,10 @@ namespace HideAndSeek {
 				return this.m_Transform.position;
 			var result = this.m_Collider.bounds.ClosestPoint (value);
 			return result;
+		}
+
+		public virtual string GetInfo() {
+			return "[ObjectController]: " + this.objectName;
 		}
 
 		#endregion

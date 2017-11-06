@@ -17,3 +17,5 @@ MonoBehaviour:
   questRoomName: AtticBedRoom
   questStuffName: Wardrobe
   questStuffItemName: T-Shirt
+  questCompleteText: Return attic room to get new command.
+  questFailText: Try again.

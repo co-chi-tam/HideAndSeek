@@ -230,14 +230,10 @@ namespace HideAndSeek {
 			RaycastHit hitInfo;
 			if (Physics.Raycast (rayPoint, out hitInfo, 100f)) {
 				var room = CRoom.Instance;
-				var objCtrl = room.DetectStuffObject (hitInfo.collider.gameObject) as CStuff;
-				if (objCtrl != null
-					&& objCtrl.stuffName == this.m_CurrentQuest.questStuffName
-					&& room.roomSceneName == this.m_CurrentQuest.questRoomName
-					&& this.m_InventoryStuff == this.m_CurrentQuest.questStuffItemName) {
-					// RESET QUEST
-					this.UpdateQuest ();
-				}
+				var objCtrl = room.DetectStuffObject (hitInfo.collider.gameObject);
+				// RESET QUEST
+				this.UpdateQuest (this.IsQuestCompleted (objCtrl));
+
 				this.m_MainCharacter.SetTargetPosition (hitInfo.point);
 				this.RemoveItem ();
 			}
@@ -253,7 +249,7 @@ namespace HideAndSeek {
 			this.m_UIManager.DroppedItem ();
 		}
 
-		public virtual void ShowItem(string name, Action<string> submit, Action cancel) {
+		public virtual void ShowItem(string name, string displayName, Action<string> submit, Action cancel) {
 			if (name == this.m_InventoryStuff
 				|| name == this.m_QuestStuffItem) {
 				if (cancel != null) {
@@ -261,7 +257,7 @@ namespace HideAndSeek {
 				}
 				return;
 			}
-			this.ShowItemPanel (name, submit, cancel);
+			this.ShowItemPanel (name, displayName, submit, cancel);
 		}
 
 		public virtual void ShowQuestItem(Action<string> submit, Action cancel) {
@@ -271,11 +267,11 @@ namespace HideAndSeek {
 				}
 				return;
 			}
-			this.ShowItemPanel (this.m_QuestStuffItem, submit, cancel);
+			this.ShowItemPanel (this.m_QuestStuffItem, this.m_QuestStuffItem, submit, cancel);
 		}
 
-		private void ShowItemPanel(string name, Action<string> submit, Action cancel) {
-			this.m_UIManager.ShowItemPanel (name, 
+		private void ShowItemPanel(string name, string displayName, Action<string> submit, Action cancel) {
+			this.m_UIManager.ShowItemPanel (name, displayName,
 				(itemName) => {
 					this.AddItem(name);
 					if (submit != null) {
@@ -288,6 +284,14 @@ namespace HideAndSeek {
 
 		#region Quest
 
+		public virtual bool IsQuestCompleted(CObjectController objCtrl) {
+			var room = CRoom.Instance;
+			return objCtrl != null
+				&& objCtrl.objectName == this.m_CurrentQuest.questStuffName
+				&& room.roomSceneName == this.m_CurrentQuest.questRoomName
+				&& this.m_InventoryStuff == this.m_CurrentQuest.questStuffItemName;
+		}
+
 		public virtual void LoadQuest() {
 			this.m_CurrentQuest		= this.m_QuestAssets[this.m_QuestIndex] as CQuest;
 			this.m_QuestRoomName 	= this.m_CurrentQuest.questRoomName;
@@ -297,13 +301,16 @@ namespace HideAndSeek {
 			this.m_UIManager.SetQuestInfoText (this.m_CurrentQuest.questDescription);
 		}
 
-		public virtual void UpdateQuest() {
-			this.m_QuestRoomName 	= string.Empty;
-			this.m_QuestStuffName 	= string.Empty;
-			this.m_QuestStuffItem 	= string.Empty;
-			this.m_IsQuestCompleted = true;
-			this.m_UIManager.SetQuestInfoText (string.Format ("Return {0} to get new command", 
-				this.m_CurrentQuest.questReceiveRoomName));
+		public virtual void UpdateQuest(bool result) {
+			if (result) {
+				this.m_QuestRoomName 	= string.Empty;
+				this.m_QuestStuffName 	= string.Empty;
+				this.m_QuestStuffItem 	= string.Empty;
+				this.m_UIManager.SetQuestInfoText (this.m_CurrentQuest.questCompleteText);
+			} else {
+//				this.m_UIManager.SetQuestInfoText (this.m_CurrentQuest.questFailText);
+			}
+			this.m_IsQuestCompleted = result;
 		}
 
 		public virtual void CompletedQuest() {

@@ -17,3 +17,5 @@ MonoBehaviour:
   questRoomName: BedRoom
   questStuffName: Bed
   questStuffItemName: Pillow
+  questCompleteText: Return attic room to get new command.
+  questFailText: Try again.

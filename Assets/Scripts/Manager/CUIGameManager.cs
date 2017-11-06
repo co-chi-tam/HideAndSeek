@@ -24,11 +24,13 @@ namespace HideAndSeek {
 		[Header("Stuff Item")]
 		[SerializeField] 	protected GameObject m_ShowItemPanel;
 		[SerializeField]	protected Image m_ItemImage;
+		[SerializeField]	protected Text m_ItemDisplayNameText;
 		[SerializeField]	protected Button m_SubmitItemButton;
 		[SerializeField]	protected Button m_CancelItemButton;
 
 		[Header("Inventory Item")]
 		[SerializeField]	protected Image m_InventoryItemImage;
+		[SerializeField]	protected Text m_InventoryItemText;
 		[SerializeField]	protected UIDrag m_InventoryDragItem;
 
 		protected Sprite[] m_ResourceItemSprites;
@@ -67,7 +69,7 @@ namespace HideAndSeek {
 					this.m_GoInfoObjectPool.Add (objSpawned);
 				}
 				var objUI = this.m_GoInfoObjectPool [i];
-				objUI.SetFollowObject (values[i].gameObject);
+				objUI.SetFollowObject (values[i]);
 				objUI.gameObject.SetActive (true);
 			}
 			this.m_ObjectInfoPrefab.gameObject.SetActive (false);
@@ -78,6 +80,7 @@ namespace HideAndSeek {
 			for (int i = 0; i < this.m_ResourceItemSprites.Length; i++) {
 				if (this.m_ResourceItemSprites [i].name == name) {
 					this.m_InventoryItemImage.sprite = this.m_ResourceItemSprites [i];
+					this.m_InventoryItemText.text = name;
 					break;
 				}
 			}
@@ -94,15 +97,17 @@ namespace HideAndSeek {
 			this.m_InventoryDragItem.OnEventEndDrag = null;
 			this.m_InventoryDragItem.enabled = false;
 			this.m_InventoryItemImage.sprite = null;
+			this.m_InventoryItemText.text = string.Empty;
 		}
 
-		public virtual void ShowItemPanel(string name, Action<string> submit, Action cancel) {
-			// Active p anel
+		public virtual void ShowItemPanel(string name, string displayName, Action<string> submit, Action cancel) {
+			// Active panel
 			this.m_ShowItemPanel.SetActive (true);
 			// Load item image
 			for (int i = 0; i < this.m_ResourceItemSprites.Length; i++) {
 				if (this.m_ResourceItemSprites [i].name == name) {
 					this.m_ItemImage.sprite = this.m_ResourceItemSprites [i];
+					this.m_ItemDisplayNameText.text = displayName;
 					break;
 				}
 			}

@@ -8,7 +8,6 @@ namespace HideAndSeek {
 		#region Fields
 
 		[Header("Stuff info")]
-		public string stuffName;
 		public string[] stuffContain;
 
 		[Header("Target point")]
@@ -22,12 +21,7 @@ namespace HideAndSeek {
 			base.ActivedObject ();
 			if (this.stuffContain.Length == 0)
 				return;
-			CGameManager.Instance.ShowItem (this.stuffContain [0], (itemName) => {
-				
-			}, () => {
-				
-			});
-			this.m_DidActive = true;
+			CGameManager.Instance.ShowItem (this.stuffContain [0], this.stuffContain [0], null, null);
 		}
 
 		#endregion
@@ -38,6 +32,10 @@ namespace HideAndSeek {
 			if (this.targetPoint == null)
 				return base.GetClosestPoint (value);
 			return this.targetPoint.transform.position;
+		}
+
+		public override string GetInfo() {
+			return this.objectName;
 		}
 
 		#endregion

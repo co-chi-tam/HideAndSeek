@@ -19,7 +19,6 @@ namespace HideAndSeek {
 			if (string.IsNullOrEmpty (this.swapRoom))
 				return;
 			CGameManager.Instance.LoadRoom (this.swapRoom);
-			this.m_DidActive = true;
 		}
 
 		#endregion

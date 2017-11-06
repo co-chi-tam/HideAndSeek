@@ -11,6 +11,9 @@ public class CQuest : ScriptableObject, ICloneable{
 	public string questRoomName;
 	public string questStuffName;
 	public string questStuffItemName;
+	[Header("Result")]
+	public string questCompleteText;
+	public string questFailText;
 
 	public object Clone() {
 		return this.MemberwiseClone ();

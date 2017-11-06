@@ -54,7 +54,7 @@
      <Compile Include="Assets\Editor\QuestAsset.cs" />
      <Compile Include="Assets\Editor\ScriptableObjectUtility.cs" />
      <None Include="Assets\Models\Materials\VertexColor.shader" />
-     <None Include="Assets\Idle MoCap\Idle Package Description.txt" />
+     <None Include="Assets\Models\Idle MoCap\Idle Package Description.txt" />
  <Reference Include="Facebook.Unity.Settings">
  <HintPath>E:/Test/Gihub/HideAndSeek/trunk/Library/FacebookSDK/Facebook.Unity.Settings.dll</HintPath>
  </Reference>

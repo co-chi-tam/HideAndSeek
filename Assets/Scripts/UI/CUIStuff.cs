@@ -1,13 +1,25 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace HideAndSeek {
 	public class CUIStuff : MonoBehaviour {
 
-		[SerializeField]	protected GameObject m_Follower;
+		#region Fields
+
+		[Header("Info")]
+		[SerializeField]	protected Image m_DisplaysImage;
+		[SerializeField]	protected Text m_DisplayText;
+
+		[Header("Follower")]
+		[SerializeField]	protected CObjectController m_Follower;
 
 		protected RectTransform m_RectTransform;
+
+		#endregion
+
+		#region Implementation Monobehaviour
 
 		protected virtual void Awake() {
 			this.m_RectTransform = this.transform as RectTransform;
@@ -19,9 +31,15 @@ namespace HideAndSeek {
 			this.m_RectTransform.position = Camera.main.WorldToScreenPoint (this.m_Follower.transform.position);
 		}
 
-		public virtual void SetFollowObject(GameObject value) {
+		#endregion
+
+		#region Getter && Setter
+
+		public virtual void SetFollowObject(CObjectController value) {
 			this.m_Follower = value;
 		}
+
+		#endregion
 		
 	}
 }

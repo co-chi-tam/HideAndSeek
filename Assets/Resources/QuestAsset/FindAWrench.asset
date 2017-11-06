@@ -17,3 +17,5 @@ MonoBehaviour:
   questRoomName: GarageRoom
   questStuffName: Box
   questStuffItemName: Wrench
+  questCompleteText: Return attic room to get new command.
+  questFailText: Try again.

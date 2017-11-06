@@ -12,8 +12,10 @@ MonoBehaviour:
   m_Name: FindAKnife
   m_EditorClassIdentifier: 
   questName: Find a knife.
-  questDescription: Put a knife into kitchen at kitchen.
+  questDescription: Drag a knife in kitchen.
   questReceiveRoomName: AtticRoom
   questRoomName: KitchenRoom
   questStuffName: Kitchen
   questStuffItemName: Knife
+  questCompleteText: Return attic room to get new command.
+  questFailText: Try again.
