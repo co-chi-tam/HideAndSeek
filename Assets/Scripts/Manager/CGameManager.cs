@@ -91,12 +91,6 @@ namespace HideAndSeek {
 
 		#region Game State
 
-		protected virtual void OnSceneWasLoaded(Scene old, Scene cur) {
-			this.m_GameState = this.m_NextGameState;
-			this.m_StateUpdated = false;
-			this.m_UIManager.SetUIState (this.m_GameState);
-		}
-
 		public virtual void StartGameState() {
 			if (this.m_NextGameState == EGameState.WaitingState) {
 				CSceneManager.Instance.LoadScene (this.m_CurrentRoom);
@@ -119,6 +113,8 @@ namespace HideAndSeek {
 			this.LoadHiddenCharacter();
 			// Load quest
 			this.LoadQuest();
+			// Load object info
+			this.LoadObjectInfo();
 			// Change state
 			this.m_NextGameState = EGameState.UpdateGameState;
 			this.m_GameState = this.m_NextGameState;
@@ -149,6 +145,9 @@ namespace HideAndSeek {
 				if (this.m_IsQuestCompleted) {
 					this.CompletedQuest ();
 				}
+				// Load object info
+				this.LoadObjectInfo();
+				// Update state
 				this.m_StateUpdated = true;
 			}
 		}
@@ -157,6 +156,15 @@ namespace HideAndSeek {
 			// Change state
 			this.m_NextGameState = EGameState.EndGameState;
 			this.m_GameState = this.m_NextGameState;
+		}
+
+		#endregion
+
+		#region Object info
+
+		public virtual void LoadObjectInfo() {
+			// Load info
+			this.m_UIManager.LoadInfoObjects (CRoom.Instance.stuffs);
 		}
 
 		#endregion
@@ -196,6 +204,12 @@ namespace HideAndSeek {
 			this.m_CurrentRoom = name;
 		}
 
+		protected virtual void OnSceneWasLoaded(Scene old, Scene cur) {
+			this.m_GameState = this.m_NextGameState;
+			this.m_StateUpdated = false;
+			this.m_UIManager.SetUIState (this.m_GameState);
+		}
+
 		public virtual void LoadHiddenRoom() {
 			for (int i = 0; i < this.m_HiddeRoomList.Length; i++) {
 				var random = UnityEngine.Random.Range (0, this.m_HiddeRoomList.Length);
@@ -217,9 +231,10 @@ namespace HideAndSeek {
 			if (Physics.Raycast (rayPoint, out hitInfo, 100f)) {
 				var room = CRoom.Instance;
 				var objCtrl = room.DetectStuffObject (hitInfo.collider.gameObject) as CStuff;
-				if (objCtrl != null 
+				if (objCtrl != null
+					&& objCtrl.stuffName == this.m_CurrentQuest.questStuffName
 					&& room.roomSceneName == this.m_CurrentQuest.questRoomName
-					&& objCtrl.stuffName == this.m_CurrentQuest.questStuffName) {
+					&& this.m_InventoryStuff == this.m_CurrentQuest.questStuffItemName) {
 					// RESET QUEST
 					this.UpdateQuest ();
 				}

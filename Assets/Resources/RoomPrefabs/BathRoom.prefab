@@ -700,6 +700,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97c2a34584f5b724eb628680b920a491, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  objectName: SwapPoint
   m_Collider: {fileID: 65454571463513056}
   m_Animator: {fileID: 0}
   swapRoom: KitchenRoom
@@ -714,6 +715,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d60d3796af9a2a4eb934296ea03907c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  objectName: Toilet
   m_Collider: {fileID: 65769237339460474}
   m_Animator: {fileID: 0}
   stuffName: Toilet
@@ -730,6 +732,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d60d3796af9a2a4eb934296ea03907c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  objectName: Bathtub
   m_Collider: {fileID: 65709593361470768}
   m_Animator: {fileID: 0}
   stuffName: Bathtub
@@ -757,6 +760,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8170e23ebe421c24cb30c634ae587d68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  objectName: BathRoom
   m_Collider: {fileID: 64795359378981216}
   m_Animator: {fileID: 95915388348086190}
   roomName: Bath room
@@ -781,6 +785,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d60d3796af9a2a4eb934296ea03907c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  objectName: Towel Cabinet
   m_Collider: {fileID: 65765628604330178}
   m_Animator: {fileID: 0}
   stuffName: Towel Cabinet

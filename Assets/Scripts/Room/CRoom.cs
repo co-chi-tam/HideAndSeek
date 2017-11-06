@@ -23,7 +23,7 @@ namespace HideAndSeek {
 
 		#region Fields
 
-		[Header("Info")]
+		[Header("Room info")]
 		public string roomName;
 		public string roomSceneName;
 

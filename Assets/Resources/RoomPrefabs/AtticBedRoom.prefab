@@ -730,6 +730,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8170e23ebe421c24cb30c634ae587d68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  objectName: AtticBedRoom
   m_Collider: {fileID: 64465418896145662}
   m_Animator: {fileID: 95050735314098646}
   roomName: Attic Bedroom
@@ -766,6 +767,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97c2a34584f5b724eb628680b920a491, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  objectName: SwapPoint
   m_Collider: {fileID: 65670323070419090}
   m_Animator: {fileID: 0}
   swapRoom: AtticRoom
@@ -780,6 +782,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d60d3796af9a2a4eb934296ea03907c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  objectName: Wardrobe
   m_Collider: {fileID: 65122917977995138}
   m_Animator: {fileID: 0}
   stuffName: Wardrobe
@@ -797,6 +800,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d60d3796af9a2a4eb934296ea03907c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  objectName: Bed
   m_Collider: {fileID: 65853651941022868}
   m_Animator: {fileID: 0}
   stuffName: Bed
@@ -835,6 +839,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d60d3796af9a2a4eb934296ea03907c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  objectName: Work table
   m_Collider: {fileID: 65824306835737714}
   m_Animator: {fileID: 0}
   stuffName: Work table

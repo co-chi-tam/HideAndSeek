@@ -712,6 +712,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d60d3796af9a2a4eb934296ea03907c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  objectName: Old Cabinet
   m_Collider: {fileID: 65202094389734920}
   m_Animator: {fileID: 0}
   stuffName: Old Cabinet
@@ -729,6 +730,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97c2a34584f5b724eb628680b920a491, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  objectName: SwapPoint
   m_Collider: {fileID: 65965679278369310}
   m_Animator: {fileID: 0}
   swapRoom: AtticBedRoom
@@ -754,6 +756,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97c2a34584f5b724eb628680b920a491, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  objectName: SwapPoint
   m_Collider: {fileID: 65821855248354228}
   m_Animator: {fileID: 0}
   swapRoom: LivingRoom
@@ -768,6 +771,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8170e23ebe421c24cb30c634ae587d68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  objectName: AtticRoom
   m_Collider: {fileID: 64564452263151254}
   m_Animator: {fileID: 95726523160517624}
   roomName: Attic Room
@@ -803,6 +807,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d60d3796af9a2a4eb934296ea03907c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  objectName: Old Carton Box
   m_Collider: {fileID: 65703236471687158}
   m_Animator: {fileID: 0}
   stuffName: Old Carton Box

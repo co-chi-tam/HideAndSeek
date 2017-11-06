@@ -7,7 +7,7 @@ namespace HideAndSeek {
 
 		#region Fields
 
-		[Header("Info")]
+		[Header("Swap info")]
 		public string swapRoom;
 
 		#endregion

@@ -808,6 +808,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97c2a34584f5b724eb628680b920a491, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  objectName: SwapPoint
   m_Collider: {fileID: 65306038617743964}
   m_Animator: {fileID: 0}
   swapRoom: KitchenRoom
@@ -822,6 +823,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d60d3796af9a2a4eb934296ea03907c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  objectName: TVCabinet
   m_Collider: {fileID: 65830052418683372}
   m_Animator: {fileID: 0}
   stuffName: TVCabinet
@@ -839,6 +841,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8170e23ebe421c24cb30c634ae587d68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  objectName: LivingRoom
   m_Collider: {fileID: 64915463645831872}
   m_Animator: {fileID: 95641549144529692}
   roomName: Living room
@@ -875,6 +878,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97c2a34584f5b724eb628680b920a491, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  objectName: SwapPoint
   m_Collider: {fileID: 65286689361092952}
   m_Animator: {fileID: 0}
   swapRoom: GarageRoom
@@ -900,6 +904,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97c2a34584f5b724eb628680b920a491, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  objectName: SwapPoint
   m_Collider: {fileID: 65680593789039878}
   m_Animator: {fileID: 0}
   swapRoom: AtticRoom
@@ -914,6 +919,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97c2a34584f5b724eb628680b920a491, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  objectName: SwapPoint
   m_Collider: {fileID: 65279403978039066}
   m_Animator: {fileID: 0}
   swapRoom: BedRoom

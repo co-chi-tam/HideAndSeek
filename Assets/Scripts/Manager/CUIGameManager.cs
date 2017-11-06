@@ -15,6 +15,8 @@ namespace HideAndSeek {
 
 		[Header("Ingame panel")]
 		[SerializeField] 	protected GameObject m_InGamePanel;
+		[SerializeField]	protected GameObject m_ObjectInfoPanel;
+		[SerializeField]	protected CUIStuff m_ObjectInfoPrefab;
 
 		[Header("Quest info")]
 		[SerializeField]	protected Text m_QuestInfoText;
@@ -30,6 +32,7 @@ namespace HideAndSeek {
 		[SerializeField]	protected UIDrag m_InventoryDragItem;
 
 		protected Sprite[] m_ResourceItemSprites;
+		protected List<CUIStuff> m_GoInfoObjectPool;
 
 		#endregion
 
@@ -38,6 +41,7 @@ namespace HideAndSeek {
 		protected virtual void Awake() {
 			var resourceImages = Resources.LoadAll<Sprite> ("ItemImages");
 			this.m_ResourceItemSprites = resourceImages;
+			this.m_GoInfoObjectPool = new List<CUIStuff> ();
 		}
 
 		protected virtual void Start() {
@@ -47,6 +51,27 @@ namespace HideAndSeek {
 		#endregion
 
 		#region Main methods
+
+		public virtual void LoadInfoObjects(CStuff[] values) {
+			// Deactive all
+			for (int i = 0; i < this.m_GoInfoObjectPool.Count; i++) {
+				var objUI = this.m_GoInfoObjectPool [i];
+				objUI.gameObject.SetActive (false);
+			}
+			// Load UI Object pool
+			for (int i = 0; i < values.Length; i++) {
+				if (i >= this.m_GoInfoObjectPool.Count) {
+					var objSpawned = Instantiate (this.m_ObjectInfoPrefab);
+					objSpawned.transform.SetParent (this.m_ObjectInfoPanel.transform);
+					// Add object pool.
+					this.m_GoInfoObjectPool.Add (objSpawned);
+				}
+				var objUI = this.m_GoInfoObjectPool [i];
+				objUI.SetFollowObject (values[i].gameObject);
+				objUI.gameObject.SetActive (true);
+			}
+			this.m_ObjectInfoPrefab.gameObject.SetActive (false);
+		}
 
 		public virtual void TakeItem(string name) {
 			// Load item image

@@ -80,13 +80,13 @@ public static class CUtil {
 		return result.ToString();
 	}
 
-	public static bool IsPointerOverUIObject(Vector2 position) {
-		PointerEventData eventDataCurrentPosition = new PointerEventData(EventSystem.current);
-		eventDataCurrentPosition.position = position;
-		List<RaycastResult> results = new List<RaycastResult>();
-		EventSystem.current.RaycastAll(eventDataCurrentPosition, results);
-		return results.Count > 0;
-	}
+//	public static bool IsPointerOverUIObject(Vector2 position) {
+//		PointerEventData eventDataCurrentPosition = new PointerEventData(EventSystem.current);
+//		eventDataCurrentPosition.position = position;
+//		List<RaycastResult> results = new List<RaycastResult>();
+//		EventSystem.current.RaycastAll(eventDataCurrentPosition, results);
+//		return results.Count > 0;
+//	}
 
 	public static Vector3 GetCenterScreen2WorldPoint() {
 		var halfWidth = (float)Screen.width / 2f;

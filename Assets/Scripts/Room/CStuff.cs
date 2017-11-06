@@ -7,7 +7,7 @@ namespace HideAndSeek {
 
 		#region Fields
 
-		[Header("Info")]
+		[Header("Stuff info")]
 		public string stuffName;
 		public string[] stuffContain;
 

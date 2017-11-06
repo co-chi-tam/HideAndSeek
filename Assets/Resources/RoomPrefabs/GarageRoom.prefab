@@ -722,6 +722,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97c2a34584f5b724eb628680b920a491, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  objectName: SwapPoint
   m_Collider: {fileID: 65874009971978598}
   m_Animator: {fileID: 0}
   swapRoom: LivingRoom
@@ -736,6 +737,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d60d3796af9a2a4eb934296ea03907c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  objectName: Work table
   m_Collider: {fileID: 65904158924224036}
   m_Animator: {fileID: 0}
   stuffName: Work table
@@ -753,6 +755,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8170e23ebe421c24cb30c634ae587d68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  objectName: GarageRoom
   m_Collider: {fileID: 64877200746019840}
   m_Animator: {fileID: 95543884321975986}
   roomName: Garage Room
@@ -777,6 +780,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d60d3796af9a2a4eb934296ea03907c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  objectName: Big stuffs
   m_Collider: {fileID: 65690494578166966}
   m_Animator: {fileID: 0}
   stuffName: Big stuffs
@@ -794,6 +798,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d60d3796af9a2a4eb934296ea03907c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  objectName: Box
   m_Collider: {fileID: 65093317080743084}
   m_Animator: {fileID: 0}
   stuffName: Box

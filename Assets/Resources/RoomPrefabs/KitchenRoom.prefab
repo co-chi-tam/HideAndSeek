@@ -851,6 +851,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d60d3796af9a2a4eb934296ea03907c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  objectName: Kitchen
   m_Collider: {fileID: 65480498939251552}
   m_Animator: {fileID: 0}
   stuffName: Kitchen
@@ -868,6 +869,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97c2a34584f5b724eb628680b920a491, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  objectName: SwapPoint
   m_Collider: {fileID: 65909467507658416}
   m_Animator: {fileID: 0}
   swapRoom: CellarRoom
@@ -882,6 +884,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d60d3796af9a2a4eb934296ea03907c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  objectName: TrashBin
   m_Collider: {fileID: 65161317554988882}
   m_Animator: {fileID: 0}
   stuffName: TrashBin
@@ -910,6 +913,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97c2a34584f5b724eb628680b920a491, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  objectName: SwapPoint
   m_Collider: {fileID: 65580096800036264}
   m_Animator: {fileID: 0}
   swapRoom: LivingRoom
@@ -924,6 +928,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d60d3796af9a2a4eb934296ea03907c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  objectName: Fridge
   m_Collider: {fileID: 65059204167190390}
   m_Animator: {fileID: 0}
   stuffName: Fridge
@@ -941,6 +946,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97c2a34584f5b724eb628680b920a491, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  objectName: SwapPoint
   m_Collider: {fileID: 65920420171239460}
   m_Animator: {fileID: 0}
   swapRoom: BathRoom
@@ -955,6 +961,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8170e23ebe421c24cb30c634ae587d68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  objectName: KitchenRoom
   m_Collider: {fileID: 64746665553569440}
   m_Animator: {fileID: 95947042369478098}
   roomName: Kitchen room

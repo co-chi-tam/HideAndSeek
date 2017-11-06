@@ -7,6 +7,9 @@ namespace HideAndSeek {
 
 		#region Fields
 
+		[Header("Info")]
+		public string objectName;
+
 		[Header("Collider")]
 		[SerializeField]	protected Collider m_Collider;
 
